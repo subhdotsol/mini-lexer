@@ -35,7 +35,8 @@ impl Lexer {
             self.scan_next_token();
         }
 
-        // Return a slice reference to all collected tokens.
+        self.tokens.push(Token::new(TokenType::Eof, ""));
+
         &self.tokens
     }
 

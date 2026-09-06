@@ -7,6 +7,7 @@ pub enum TokenType {
     Slash,
     OpenParenthesis,
     CloseParenthesis,
+    Eof,
 }
 
 #[derive(Debug, PartialEq, Clone)]
