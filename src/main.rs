@@ -1,8 +1,11 @@
+mod compiler;
+mod instruction;
 mod lexer;
 mod parser;
 mod pretty_printer;
 mod token;
 
+use compiler::Compiler;
 use lexer::Lexer;
 use parser::Parser;
 use pretty_printer::PrettyPrinter;
@@ -30,4 +33,15 @@ fn main() {
 
     println!("\nPRETTY PRINT:");
     println!("{output}");
+
+    // compile the AST into stack machine instructions
+
+    let mut compiler = Compiler::new(true);
+    let instructions = compiler.compile(&ast);
+
+    println!("\nINSTRUCTIONS:");
+    instructions
+        .iter()
+        .enumerate()
+        .for_each(|(index, instruction)| println!("{index}: {instruction:?}"));
 }
